@@ -18,8 +18,9 @@ class NewsApiController extends Controller
         $curl_handle = curl_init();
         curl_setopt_array($curl_handle, [
             CURLOPT_URL => "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e67e3f52a34d4b3a890051c783485533",
-            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_RETURNTRANSFER => true,     //Return data as string
             CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_SSL_VERIFYPEER => false,    //URL is HTTPS(Secured) to load that type of web site make CURLOPT_SSL_VERIFYPEER => false.
         ]);
         $data = curl_exec($curl_handle);
         curl_close($curl_handle);
